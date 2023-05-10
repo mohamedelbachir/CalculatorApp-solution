@@ -1,0 +1,37 @@
+.contener-key{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+    padding: 20px 20px 26px 20px;
+    border-radius: 6px;
+    button{
+        transition: 0.3s cubic-bezier(0.46, 0.03, 0.52, 0.96) background-color;
+        display: inline-block;
+        text-align: center;
+        //padding: 10px;
+        width: auto;
+        height: 45px;
+
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.2em;
+        outline: none;
+        border: none;
+        border-radius: 6px;
+        font-family: inherit;
+        &:first-of-type{
+            grid-column-start: 4;
+            grid-row-start: 1;
+        }
+        
+        &:nth-of-type(2){
+            grid-column-start: 1;
+            grid-row-start: 5;
+        }
+
+        &:last-of-type,&:nth-of-type(2){
+            grid-column: span 2;
+        }
+    }
+}

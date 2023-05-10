@@ -1,0 +1,59 @@
+@font-face {
+  font-family:'League Spartan';
+  src: url('./fonts/LeagueSpartan-Regular.ttf');
+  font-display: swap;
+}
+body {
+  margin: 0;
+  font-family: 'League Spartan', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root{
+  /**Theme 1*/
+  --theme1-bg-content :hsl(222, 26%, 31%);
+  --theme1-bg-toggle-pad :hsl(223, 31%, 20%);
+  --theme1-bg-screen  :hsl(224, 36%, 15%);
+  /*Keys*/
+  --theme1-keys-action:hsl(225, 21%, 49%);
+  --theme1-keys-action-shadow:hsl(224, 28%, 35%);
+  --theme1-keys-equal-toogle:hsl(6, 63%, 50%);
+  --theme1-keys-equal-shadown:hsl(6, 70%, 34%);
+  --theme1-keys-bg:hsl(30, 25%, 89%);
+  --theme1-keys-shadow:hsl(28, 16%, 65%);
+  /*Text*/
+  --theme1-text-keys:hsl(221, 14%, 31%);
+  --theme1-text-keys-default:hsl(0, 0%, 100%);
+
+  /**Theme 2*/
+  --theme2-bg-content :hsl(0, 0%, 90%);
+  --theme2-bg-toggle-pad : hsl(0, 5%, 81%);
+  --theme2-bg-screen  :hsl(0, 0%, 93%);
+  /*Keys*/
+  --theme2-keys-action:hsl(185, 42%, 37%);
+  --theme2-keys-action-shadow:hsl(185, 58%, 25%);
+  --theme2-keys-equal-toogle:hsl(25, 98%, 40%);
+  --theme2-keys-equal-shadown:hsl(25, 99%, 27%);
+  --theme2-keys-bg:hsl(45, 7%, 89%);
+  --theme2-keys-shadow:hsl(35, 11%, 61%);
+  /*Text*/
+  --theme2-text-keys:hsl(60, 10%, 19%);
+  --theme2-text-keys-default:hsl(0, 0%, 100%);
+
+  /**Theme 3*/
+  --theme3-bg-content :hsl(268, 75%, 9%);
+  --theme3-bg-toggle-pad :hsl(268, 71%, 12%);
+  --theme3-bg-screen  :hsl(268, 71%, 12%);
+  /*Keys*/
+  --theme3-keys-action:hsl(281, 89%, 26%);
+  --theme3-keys-action-shadow:hsl(285, 91%, 52%);
+  --theme3-keys-equal-toogle:hsl(176, 100%, 44%);
+  --theme3-keys-equal-shadown:hsl(177, 92%, 70%);
+  --theme3-keys-bg:hsl(268, 47%, 21%);
+  --theme3-keys-shadow:hsl(290, 70%, 36%);
+  /*Text*/
+  --theme3-text-keys:hsl(52, 100%, 62%);
+  --theme3-text-keys-default:hsl(198, 20%, 13%);
+  --theme3-text-other:hsl(0, 0%, 100%);
+}
