@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import Banner from './Components/Banner.compenent'
 import Screen from './Components/Screen.component'
 import './App.scss';
@@ -18,7 +18,7 @@ function App() {
 
   const deleteLast = function () {
     setValue((value) => {
-      return (value != 0 && value / 10 >= 1 || isNaN(parseFloat(value))) ? value.toString().slice(0, -1) : (value / 10 < 1) ? 0 : value
+      return ((value !== 0 && value / 10 >= 1) || isNaN(parseFloat(value))) ? value.toString().slice(0, -1) : (value / 10 < 1) ? 0 : value
     })
   }
 
@@ -28,15 +28,17 @@ function App() {
 
   function calculate() {
     setValue((value) => {
+      //eslint-disable-next-line
       const mathExpressionRegex = /^-?\d+(\.\d+)?(\s*[\+\-\*\/]\s*-?\d+(\.\d+)?)*$/
       const isValid = mathExpressionRegex.test(value);
+      //eslint-disable-next-line
       return isValid ? eval(value) : 0
     })
   }
 
   function addNumber(n) {
     setValue((value) => {
-      return (value == '0' && n != '.') ? n : value + n
+      return (value === '0' && n !== '.') ? n : value + n
     })
   }
   const [themeID, setTheme] = useState(window.localStorage.getItem("Theme") || 0);
