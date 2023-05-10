@@ -8,10 +8,15 @@
     user-select: none;
     
 }
+#togglecheck{
+    display: inline-block;
+    margin-left: 5px;
+}
 #result{
     width: 100%;
     padding:20px;
     font-size: 2em;
+    font-weight: bold;
     text-align: right;
     font-family: inherit;
     background-color: transparent;

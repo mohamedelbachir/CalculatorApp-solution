@@ -28,17 +28,17 @@ function App() {
 
   function calculate() {
     setValue((value) => {
-      //eslint-disable-next-line
+      // eslint-disable-next-line
       const mathExpressionRegex = /^-?\d+(\.\d+)?(\s*[\+\-\*\/]\s*-?\d+(\.\d+)?)*$/
       const isValid = mathExpressionRegex.test(value);
-      //eslint-disable-next-line
+      // eslint-disable-next-line
       return isValid ? eval(value) : 0
     })
   }
 
   function addNumber(n) {
     setValue((value) => {
-      return (value === '0' && n !== '.') ? n : value + n
+      return (value.toString() === '0' && n.toString() !== '.') ? n : value + n
     })
   }
   const [themeID, setTheme] = useState(window.localStorage.getItem("Theme") || 0);
