@@ -41,7 +41,7 @@ export default function Banner({themeID,setTheme }) {
                 <h2>calc</h2>
             </div>
             <div className="theme-ctn">
-                <label htmlFor="togglecheck">THEME : </label>
+                <span id="togglecheck">THEME : </span>
                 <div className="themeSwitcher" ref={ref} id="togglecheck">
                     <div className="thumb"></div>
                 </div>
