@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import Banner from './Components/Banner.compenent'
 import Screen from './Components/Screen.component'
 import './App.scss';
@@ -12,13 +12,17 @@ export const THEME = [
 
 function App() {
   const [value, setValue] = useState("0")
+  const [expression, setExpression] = useState("")
+  const [pressPad,setPressPad]=useState(0)
+
   const clearResult = function () {
-    setValue(0)
+    setValue("0")
+    setExpression("")
   }
 
   const deleteLast = function () {
     setValue((value) => {
-      return ((value !== 0 && value / 10 >= 1) || isNaN(parseFloat(value))) ? value.toString().slice(0, -1) : (value / 10 < 1) ? 0 : value
+      return (value.length > 1 && !isNaN(value)) ? value.toString().slice(0, -1) : "0"
     })
   }
 
@@ -28,25 +32,56 @@ function App() {
 
   function calculate() {
     setValue((value) => {
+      value=expression+value
       // eslint-disable-next-line
       const mathExpressionRegex = /^-?\d+(\.\d+)?(\s*[\+\-\*\/]\s*-?\d+(\.\d+)?)*$/
       const isValid = mathExpressionRegex.test(value);
+      setExpression("")
       // eslint-disable-next-line
-      return isValid ? eval(value) : 0
+      return isValid? eval(value)+"" : "0"
     })
   }
 
-  function addNumber(n) {
+  function addNumber(opt) {
+    opt = opt.toString()
+    if(isNaN(opt)&&opt!=="."){
+      setPressPad((v)=>v-1)
+    }else{
+      setPressPad(0)
+    }
     setValue((value) => {
-      return (value.toString() === '0' && n.toString() !== '.') ? n : value + n
+      if (value.length === 1 && opt !== "-" &&opt !== "." && value === "0" && opt !== "*" && opt !== "+" && opt !== "/") {
+        value = opt
+      } else {
+        if ((!value.includes(".") && opt === ".") || !isNaN(opt)) {
+          value += opt
+        }
+      }
+      return value
     })
+    if (isNaN(opt) && opt !== ".") {
+      setExpression((exp) => {
+        //console.log(exp)
+        if (exp.length>=2&&isNaN(exp[exp.length-1])&&pressPad<0) {
+          exp=exp.slice(0,-1)
+          exp+= opt
+        } else {
+          //if (exp.lastIndexOf(opt) === -1) {
+            exp = exp + parseFloat(value) + opt
+            setValue("0")
+          //}
+        }
+        return exp
+      }
+      )
+    }
   }
   const [themeID, setTheme] = useState(window.localStorage.getItem("Theme") || 0);
   return (
     <div className={`App ${THEME[themeID]}`}>
       <main className="container">
         <Banner themeID={themeID} setTheme={setTheme} />
-        <Screen value={value} />
+        <Screen expression={expression} value={value} />
         <div className="contener-key">
           <button onClick={() => deleteLast()}>DEL</button>
           <button onClick={() => clearResult()}>RESET</button>
@@ -63,8 +98,8 @@ function App() {
           <button onClick={() => addOperator('-')}>-</button>
           <button onClick={() => addNumber('.')}>.</button>
           <button onClick={() => addNumber('0')}>0</button>
-          <button onClick={() => addOperator('/')}>/</button>
-          <button onClick={() => addOperator('*')}>x</button>
+          <button onClick={() => addOperator('/')} style={{ paddingTop: "7px" }}>&divide;</button>
+          <button onClick={() => addOperator('*')} style={{ paddingTop: "7px" }}>&times;</button>
           <button onClick={() => calculate()}>=</button>
         </div>
         <div class="attribution">

@@ -6,6 +6,15 @@
     margin-bottom: 20px;
     border-radius: 6px;
     user-select: none;
+    position: relative;
+    &::after{
+        content: attr(data-action);
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 0.8em;
+        opacity: 0.8;
+    }
     
 }
 #togglecheck{
@@ -14,12 +23,16 @@
 }
 #result{
     width: 100%;
-    padding:20px;
+    line-height: 1em;
+    padding: 0 20px;
+    padding-top: 6px;
     font-size: 2em;
     font-weight: bold;
     text-align: right;
     font-family: inherit;
     background-color: transparent;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &:disabled{
         border: none;
     }
